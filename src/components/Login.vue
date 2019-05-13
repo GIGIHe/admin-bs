@@ -8,14 +8,16 @@
         :model="formdata"
       >
         <el-form-item label="账号">
-          <el-input v-model="formdata.name"></el-input>
+          <el-input v-model="formdata.name">
+          </el-input>
         </el-form-item>
         <el-form-item label="密码">
           <el-input
             v-model="formdata.password"
             type="password"
             @keyup.enter.native="login"
-          ></el-input>
+          >
+          </el-input>
         </el-form-item>
         <el-button
           type="primary"
@@ -71,8 +73,8 @@ export default {
   bottom: 0;
   top: 0;
   right: 0;
-  background: url("../assets/timg.jpg") no-repeat center;
-  background-size: cover;
+  background-color: rgb(177, 231, 255);
+  /* background-size: cover; */
   overflow: hidden;
 }
 .title{
@@ -83,7 +85,7 @@ export default {
   width: 500px;
   height: 360px;
   margin: 50px auto;
-  background: rgba(0,0,0,0.3);
+  /* background: rgba(0,0,0,0.3); */
   padding-top:40px;
   border-radius: 100px;
   /deep/ .el-input {
@@ -93,9 +95,6 @@ export default {
     width: 275px;
     margin-top: 40px;
     margin-left: 110px;
-  }
-  /deep/ .el-form-item__label{
-    color: #fff;
   }
 }
 </style>

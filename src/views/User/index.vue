@@ -29,7 +29,7 @@
       </el-table-column>
       <el-table-column
         prop="username"
-        label="姓名"
+        label="会员名"
         width="180"
       >
       </el-table-column>

@@ -1,12 +1,20 @@
 <template>
   <div class="goods_l">
-    <el-input v-model.trim="search" class="search"></el-input><el-button type="primary" icon="el-icon-search" @click="search_btn">搜索</el-button>
+    <el-input
+      v-model.trim="search"
+      class="search"
+    ></el-input>
+    <el-button
+      type="primary"
+      icon="el-icon-search"
+      @click="search_btn"
+    >搜索</el-button>
     <el-table
-      :data="tableData"
+      :data="result"
       border
       highlight
       style="width: 100%"
-       :default-sort = "{prop: 'created_at', order: 'descending'}"
+      :default-sort="{prop: 'created_at', order: 'descending'}"
     >
       <el-table-column
         type="index"
@@ -15,9 +23,9 @@
       </el-table-column>
       <el-table-column
         prop="user.username"
-        label="用户名"
+        label="会员名"
         width="120"
-         sortable
+        sortable
       >
       </el-table-column>
       <el-table-column
@@ -29,7 +37,7 @@
       <el-table-column
         prop="order_id"
         label="订单编号"
-        width = "160"
+        width="160"
       >
       </el-table-column>
       <el-table-column label="地址">
@@ -41,7 +49,10 @@
             trigger="hover"
             :content="`${scope.row.user.city}${scope.row.user.area}${scope.row.user.stress}`"
           >
-            <p slot="reference" class="address">{{scope.row.user.city}}{{scope.row.user.area}}{{scope.row.user.stress}}</p>
+            <p
+              slot="reference"
+              class="address"
+            >{{scope.row.user.city}}{{scope.row.user.area}}{{scope.row.user.stress}}</p>
           </el-popover>
         </template>
       </el-table-column>
@@ -86,7 +97,8 @@ export default {
       tableData: [],
       pn: 1,
       count: 1,
-      search:''
+      search: "",
+      result:[]
     };
   },
   mounted() {
@@ -94,6 +106,12 @@ export default {
   },
   computed: {
     handle() {}
+  },
+  watch: {
+    tableData(n, old) {
+      // console.log(n);
+      return this.result = n;
+    }
   },
   methods: {
     getData() {
@@ -169,14 +187,14 @@ export default {
       this.pn = page;
       this.getData();
     },
-    search_btn(){
+    search_btn() {
       let value = this.search;
       // console.log(value);
-      let result = this.tableData.filter(item=>{
+      let res = this.tableData.filter(item => {
         // console.log(value,(item.user.username));
-         return item.user.username == value
-      })
-      this.tableData = result
+        return item.user.username == value;
+      });
+      this.result = res;
     }
   }
 };
@@ -196,12 +214,12 @@ export default {
     width: 50px;
     height: 50px;
   }
-  .address{
-    overflow:hidden;
+  .address {
+    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-  .search{
+  .search {
     width: 50%;
     margin-top: 20px;
     margin-left: 20px;
