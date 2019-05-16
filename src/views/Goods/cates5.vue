@@ -119,7 +119,7 @@ export default {
   methods: {
     getData() {
       this.$axios
-        .get("/goods/5cd0d77856d3e61110cb89d7", { pn: this.pn, size: 10 })
+        .get("/goods/5cda21bf1a14ca17dcc4b1b1", { pn: this.pn, size: 10 })
         .then(res => {
           // loadingInstance.close();
           if (res.code == 200) {
